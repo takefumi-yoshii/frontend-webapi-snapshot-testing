@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`送信値は空白が除去される 1`] = `
+{
+  "payload": {
+    "value": "abcd",
+  },
+}
+`;
