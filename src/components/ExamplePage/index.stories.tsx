@@ -13,11 +13,20 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Primary: Story = {
-  storyName: "送信値は空白が除去される",
-  play: async ({ canvasElement }) => {
+function createPlay(input: string) {
+  return async ({ canvasElement }: { canvasElement: HTMLElement }) => {
     const canvas = within(canvasElement);
-    await userEvent.type(canvas.getByRole("textbox"), "  abcd  ");
+    await userEvent.type(canvas.getByRole("textbox"), input);
     await userEvent.click(canvas.getByRole("button", { name: "submit" }));
-  },
+  };
+}
+
+export const NormalInput: Story = {
+  storyName: "通常入力",
+  play: createPlay("abcd"),
+};
+
+export const WithWhiteSpaceInput: Story = {
+  storyName: "送信値に空白が含まれるパターン",
+  play: createPlay("  abcd  "),
 };

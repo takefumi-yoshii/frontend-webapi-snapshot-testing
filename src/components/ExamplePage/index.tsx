@@ -20,7 +20,7 @@ export const ExamplePage = () => {
           // ↓ この Payload にリグレッションがないか確認したい
           const data = await createPost({ payload: { value: input } });
           // ↓ 以下の画面遷移テストが書かれていても、MSWがスタブを返すため、Payload のリグレッションに気付けない可能性がある。
-          // router.push(`/path/to/page/${data.id}`}`)
+          // router.push(`/path/to/page/${data.id}`)
         }}
       >
         <input

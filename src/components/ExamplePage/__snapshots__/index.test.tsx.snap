@@ -1,6 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`送信値は空白が除去される 1`] = `
+exports[`送信値に空白が含まれるパターン 1`] = `
+{
+  "payload": {
+    "value": "abcd",
+  },
+}
+`;
+
+exports[`通常入力 1`] = `
 {
   "payload": {
     "value": "abcd",
