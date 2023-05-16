@@ -15,8 +15,9 @@ test("通常入力", async () => {
   server.use(mockCreatePost({ mockFn }));
   // Story をレンダリングして PlayFunction を再生する
   await renderThenPlay(NormalInput);
+  await waitFor(() => expect(mockFn).toHaveBeecCalledTimes(1));
   // スナップショットテストをアサーションとして使用
-  await waitFor(() => expect(mockFn.mock.lastCall[0]).toMatchSnapshot());
+  expect(mockFn.mock.lastCall[0]).toMatchSnapshot()
 });
 
 test("送信値に空白が含まれるパターン", async () => {
@@ -26,6 +27,7 @@ test("送信値に空白が含まれるパターン", async () => {
   server.use(mockCreatePost({ mockFn }));
   // Story をレンダリングして PlayFunction を再生する
   await renderThenPlay(WithWhiteSpaceInput);
+  await waitFor(() => expect(mockFn).toHaveBeecCalledTimes(1));
   // スナップショットテストをアサーションとして使用
-  await waitFor(() => expect(mockFn.mock.lastCall[0]).toMatchSnapshot());
+  expect(mockFn.mock.lastCall[0]).toMatchSnapshot()
 });
