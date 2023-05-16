@@ -5,9 +5,9 @@ import { PreparedStoryFn } from "@storybook/types";
 export async function renderThenPlay(
   Story: PreparedStoryFn<ReactRenderer, Partial<{}>>
 ) {
-  const renderResult = render(<Story />);
+  const view = render(<Story />);
   await act(async () => {
-    await Story.play?.({ canvasElement: renderResult.container });
+    await Story.play?.({ canvasElement: view.container });
   });
-  return renderResult;
+  return view;
 }
